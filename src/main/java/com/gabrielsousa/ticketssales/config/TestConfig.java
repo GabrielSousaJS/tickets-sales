@@ -2,6 +2,7 @@ package com.gabrielsousa.ticketssales.config;
 
 import com.gabrielsousa.ticketssales.entities.Order;
 import com.gabrielsousa.ticketssales.entities.User;
+import com.gabrielsousa.ticketssales.enums.OrderStatus;
 import com.gabrielsousa.ticketssales.repositories.OrderRepository;
 import com.gabrielsousa.ticketssales.repositories.UserRepository;
 import org.aspectj.weaver.ast.Or;
@@ -31,18 +32,18 @@ public class TestConfig implements CommandLineRunner {
 
         userRepository.saveAll(Arrays.asList(u1, u2, u3, u4, u5));
 
-        Order o1 = new Order(null, Instant.parse("2021-06-12T19:53:07Z"), u1);
-        Order o2 = new Order(null, Instant.parse("2021-07-01T03:42:10Z"), u2);
-        Order o3 = new Order(null, Instant.parse("2021-07-13T15:21:22Z"), u3);
-        Order o4 = new Order(null, Instant.parse("2021-08-23T19:53:07Z"), u4);
-        Order o5 = new Order(null, Instant.parse("2021-08-31T03:42:10Z"), u5);
-        Order o6 = new Order(null, Instant.parse("2021-09-30T15:21:22Z"), u1);
-        Order o7 = new Order(null, Instant.parse("2021-10-13T19:53:07Z"), u2);
-        Order o8 = new Order(null, Instant.parse("2021-10-24T03:42:10Z"), u2);
-        Order o9 = new Order(null, Instant.parse("2021-11-20T15:21:22Z"), u3);
-        Order o10 = new Order(null, Instant.parse("2021-12-10T19:53:07Z"), u4);
-        Order o11 = new Order(null, Instant.parse("2021-12-19T03:42:10Z"), u5);
-        Order o12 = new Order(null, Instant.parse("2021-12-13T15:21:22Z"), u3);
+        Order o1 = new Order(null, Instant.parse("2021-06-12T19:53:07Z"), OrderStatus.WAINTING_PAYMENT, u1);
+        Order o2 = new Order(null, Instant.parse("2021-07-01T03:42:10Z"), OrderStatus.WAINTING_PAYMENT, u2);
+        Order o3 = new Order(null, Instant.parse("2021-07-13T15:21:22Z"), OrderStatus.SHIPPED, u3);
+        Order o4 = new Order(null, Instant.parse("2021-08-23T19:53:07Z"), OrderStatus.SHIPPED, u4);
+        Order o5 = new Order(null, Instant.parse("2021-08-31T03:42:10Z"), OrderStatus.DELIVERED, u5);
+        Order o6 = new Order(null, Instant.parse("2021-09-30T15:21:22Z"), OrderStatus.PAID, u1);
+        Order o7 = new Order(null, Instant.parse("2021-10-13T19:53:07Z"), OrderStatus.CANCELED, u2);
+        Order o8 = new Order(null, Instant.parse("2021-10-24T03:42:10Z"), OrderStatus.DELIVERED, u2);
+        Order o9 = new Order(null, Instant.parse("2021-11-20T15:21:22Z"), OrderStatus.PAID, u3);
+        Order o10 = new Order(null, Instant.parse("2021-12-10T19:53:07Z"), OrderStatus.PAID, u4);
+        Order o11 = new Order(null, Instant.parse("2021-12-19T03:42:10Z"), OrderStatus.SHIPPED, u5);
+        Order o12 = new Order(null, Instant.parse("2021-12-13T15:21:22Z"), OrderStatus.CANCELED, u3);
 
         orderRepository.saveAll(Arrays.asList(o1, o2, o3, o4, o5, o6, o7, o8, o9, o10, o11, o12));
 
