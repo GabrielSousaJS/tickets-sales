@@ -1,8 +1,11 @@
 package com.gabrielsousa.ticketssales.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -16,6 +19,10 @@ public class ShowType implements Serializable {
     private Long id;
     @Column(unique = true)
     private String name;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "showType")
+    private List<Ticket> tickets;
 
     public ShowType() {
     }
@@ -39,6 +46,10 @@ public class ShowType implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<Ticket> getTickets() {
+        return tickets;
     }
 
     @Override

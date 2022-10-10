@@ -2,10 +2,12 @@ package com.gabrielsousa.ticketssales.config;
 
 import com.gabrielsousa.ticketssales.entities.Order;
 import com.gabrielsousa.ticketssales.entities.ShowType;
+import com.gabrielsousa.ticketssales.entities.Ticket;
 import com.gabrielsousa.ticketssales.entities.User;
 import com.gabrielsousa.ticketssales.entities.enums.OrderStatus;
 import com.gabrielsousa.ticketssales.repositories.OrderRepository;
 import com.gabrielsousa.ticketssales.repositories.ShowTypeRepository;
+import com.gabrielsousa.ticketssales.repositories.TicketRepository;
 import com.gabrielsousa.ticketssales.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -25,6 +27,9 @@ public class TestConfig implements CommandLineRunner {
 
     @Autowired
     private ShowTypeRepository showTypeRepository;
+
+    @Autowired
+    private TicketRepository ticketRepository;
 
     @Override
     public void run(String... args) throws Exception {
@@ -57,5 +62,14 @@ public class TestConfig implements CommandLineRunner {
         ShowType st4 = new ShowType(null, "Music concert");
 
         showTypeRepository.saveAll(Arrays.asList(st1, st2, st3, st4));
+
+        Ticket t1 = new Ticket(null, "Thor: Love and Thunder", 25.00, "In Marvel Studios' Thor: Love and Thunder, the God of Thunder teams up with Valkyrie, Korg and his ex-girlfriend Jane Foster-turned-Mighty Thor, to face a galactic assassin known as Gorr, the Butcher of the Gods.", Instant.parse("2022-11-15T19:00:00Z"), st2);
+        Ticket t2 = new Ticket(null, "The Queen Family Singalong", 30.50, "This is real life, not just fantasy! Invite friends and family from across the country to gather in their living rooms, turn up the volume and enjoy an hour of incredible hits performed by artists the whole family knows and loves.", Instant.parse("2022-10-23T20:30:00Z"), st4);
+        Ticket t3 = new Ticket(null, "Hamilton", 45.00, "The filmed version of the original Broadway smash hit Hamilton combines the best elements of theater, film and streaming into a stunning fusion of hip-hop, jazz R&B and Broadway. Featuring the story of America's founding father Alexander Hamilton, this revolutionary moment in theater is the story of America at the time, as told by America Today.", Instant.parse("2022-10-14T21:00:00Z"), st1);
+        Ticket t4 = new Ticket(null, "Beyond Van Gogh Brazil", 25.00, "An immersive experience through the work of Van Gogh.", Instant.parse("2022-12-13T22:30:00Z"), st3);
+        Ticket t5 = new Ticket(null, "Abracadabra", 30.00, "It's been 29 years since the black flame candle was lit and resurrected the 17th century sisters, and they want revenge. Now, three teenagers must stop the ravenous witches from wreaking more havoc in Salem before dawn on Halloween.", Instant.parse("2022-10-22T23:00:00Z"), st2);
+        Ticket t6 = new Ticket(null, "The Freddie Mercury Tribute", 60.00, "The show was a tribute to Queen frontman Freddie Mercury, who died of AIDS on November 24, 1991. The show marked bassist John Deacon's last full show with Queen (except for a short live appearance with Brian May, Roger Taylor and Elton John in 1997).", Instant.parse("2022-10-30T00:00:00Z"), st4);
+
+        ticketRepository.saveAll(Arrays.asList(t1, t2, t3, t4, t5, t6));
     }
 }
