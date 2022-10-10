@@ -1,6 +1,6 @@
 package com.gabrielsousa.ticketssales.entities;
 
-import com.gabrielsousa.ticketssales.enums.OrderStatus;
+import com.gabrielsousa.ticketssales.entities.enums.OrderStatus;
 
 import javax.persistence.*;
 import java.time.Instant;

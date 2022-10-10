@@ -1,11 +1,12 @@
 package com.gabrielsousa.ticketssales.config;
 
 import com.gabrielsousa.ticketssales.entities.Order;
+import com.gabrielsousa.ticketssales.entities.ShowType;
 import com.gabrielsousa.ticketssales.entities.User;
-import com.gabrielsousa.ticketssales.enums.OrderStatus;
+import com.gabrielsousa.ticketssales.entities.enums.OrderStatus;
 import com.gabrielsousa.ticketssales.repositories.OrderRepository;
+import com.gabrielsousa.ticketssales.repositories.ShowTypeRepository;
 import com.gabrielsousa.ticketssales.repositories.UserRepository;
-import org.aspectj.weaver.ast.Or;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
@@ -21,6 +22,9 @@ public class TestConfig implements CommandLineRunner {
 
     @Autowired
     private OrderRepository orderRepository;
+
+    @Autowired
+    private ShowTypeRepository showTypeRepository;
 
     @Override
     public void run(String... args) throws Exception {
@@ -47,6 +51,11 @@ public class TestConfig implements CommandLineRunner {
 
         orderRepository.saveAll(Arrays.asList(o1, o2, o3, o4, o5, o6, o7, o8, o9, o10, o11, o12));
 
+        ShowType st1 = new ShowType(null, "Theater");
+        ShowType st2 = new ShowType(null, "Movie Theater");
+        ShowType st3 = new ShowType(null, "Art exposition");
+        ShowType st4 = new ShowType(null, "Music concert");
 
+        showTypeRepository.saveAll(Arrays.asList(st1, st2, st3, st4));
     }
 }

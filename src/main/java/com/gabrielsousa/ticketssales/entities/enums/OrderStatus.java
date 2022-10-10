@@ -1,4 +1,4 @@
-package com.gabrielsousa.ticketssales.enums;
+package com.gabrielsousa.ticketssales.entities.enums;
 
     public enum OrderStatus {
 
