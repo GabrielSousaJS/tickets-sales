@@ -22,7 +22,7 @@ public class ShowType implements Serializable {
 
     @JsonIgnore
     @OneToMany(mappedBy = "showType")
-    private List<Ticket> tickets;
+    private List<Ticket> showType;
 
     public ShowType() {
     }
@@ -48,8 +48,8 @@ public class ShowType implements Serializable {
         this.name = name;
     }
 
-    public List<Ticket> getTickets() {
-        return tickets;
+    public List<Ticket> getShowType() {
+        return showType;
     }
 
     @Override

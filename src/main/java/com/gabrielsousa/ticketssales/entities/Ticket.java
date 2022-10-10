@@ -22,7 +22,7 @@ public class Ticket implements Serializable {
     private Instant showDate;
 
     @ManyToOne
-    @JoinColumn(name = "tickets")
+    @JoinColumn(name = "showType")
     private ShowType showType;
 
     public Ticket() {
