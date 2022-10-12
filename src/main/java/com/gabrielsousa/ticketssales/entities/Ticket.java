@@ -1,5 +1,7 @@
 package com.gabrielsousa.ticketssales.entities;
 
+import com.gabrielsousa.ticketssales.entities.enums.Category;
+
 import javax.persistence.*;
 import java.io.Serial;
 import java.io.Serializable;
@@ -25,15 +27,18 @@ public class Ticket implements Serializable {
     @JoinColumn(name = "showType")
     private ShowType showType;
 
+    private Integer ticketCategory;
+
     public Ticket() {
     }
 
-    public Ticket(Long id, String name, Double price, String description, Instant showDate, ShowType showType) {
+    public Ticket(Long id, String name, Double price, String description, Instant showDate, Category ticketCategory, ShowType showType) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.description = description;
         this.showDate = showDate;
+        setCategory(ticketCategory);
         this.showType = showType;
     }
 
@@ -83,6 +88,16 @@ public class Ticket implements Serializable {
 
     public void setShowType(ShowType showType) {
         this.showType = showType;
+    }
+
+    public Category ticketCategory() {
+        return Category.valueOf(ticketCategory);
+    }
+
+    public void setCategory(Category category) {
+        if (category != null) {
+            this.ticketCategory = category.getCode();
+        }
     }
 
     @Override
