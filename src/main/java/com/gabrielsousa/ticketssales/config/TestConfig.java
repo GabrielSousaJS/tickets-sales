@@ -1,15 +1,9 @@
 package com.gabrielsousa.ticketssales.config;
 
-import com.gabrielsousa.ticketssales.entities.Order;
-import com.gabrielsousa.ticketssales.entities.ShowType;
-import com.gabrielsousa.ticketssales.entities.Ticket;
-import com.gabrielsousa.ticketssales.entities.User;
+import com.gabrielsousa.ticketssales.entities.*;
 import com.gabrielsousa.ticketssales.entities.enums.Category;
 import com.gabrielsousa.ticketssales.entities.enums.OrderStatus;
-import com.gabrielsousa.ticketssales.repositories.OrderRepository;
-import com.gabrielsousa.ticketssales.repositories.ShowTypeRepository;
-import com.gabrielsousa.ticketssales.repositories.TicketRepository;
-import com.gabrielsousa.ticketssales.repositories.UserRepository;
+import com.gabrielsousa.ticketssales.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
@@ -31,6 +25,9 @@ public class TestConfig implements CommandLineRunner {
 
     @Autowired
     private TicketRepository ticketRepository;
+
+    @Autowired
+    private OrderTicketRepository orderTicketRepository;
 
     @Override
     public void run(String... args) throws Exception {
@@ -72,5 +69,16 @@ public class TestConfig implements CommandLineRunner {
         Ticket t6 = new Ticket(null, "The Freddie Mercury Tribute", 60.00, "The show was a tribute to Queen frontman Freddie Mercury, who died of AIDS on November 24, 1991. The show marked bassist John Deacon's last full show with Queen (except for a short live appearance with Brian May, Roger Taylor and Elton John in 1997).",  Instant.parse("2022-10-30T00:00:00Z"), Category.VIP, st4);
 
         ticketRepository.saveAll(Arrays.asList(t1, t2, t3, t4, t5, t6));
+
+        OrderTicket ot1 = new OrderTicket(t1, o1, 2, t1.getPrice());
+        OrderTicket ot2 = new OrderTicket(t2, o1, 1, t2.getPrice());
+        OrderTicket ot3 = new OrderTicket(t3, o1, 4, t3.getPrice());
+        OrderTicket ot4 = new OrderTicket(t4, o1, 6, t4.getPrice());
+        OrderTicket ot5 = new OrderTicket(t5, o1, 2, t5.getPrice());
+        OrderTicket ot6 = new OrderTicket(t2, o1, 1, t2.getPrice());
+        OrderTicket ot7 = new OrderTicket(t6, o1, 6, t6.getPrice());
+        OrderTicket ot8 = new OrderTicket(t3, o1, 4, t3.getPrice());
+
+        orderTicketRepository.saveAll(Arrays.asList(ot1, ot2, ot3, ot4, ot5, ot6, ot7, ot8));
     }
 }

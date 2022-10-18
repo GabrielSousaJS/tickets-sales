@@ -26,7 +26,6 @@ public class Ticket implements Serializable {
     @ManyToOne
     @JoinColumn(name = "showType")
     private ShowType showType;
-
     private Integer ticketCategory;
 
     public Ticket() {
