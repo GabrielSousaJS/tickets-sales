@@ -80,5 +80,25 @@ public class TestConfig implements CommandLineRunner {
         OrderTicket ot8 = new OrderTicket(t3, o1, 4, t3.getPrice());
 
         orderTicketRepository.saveAll(Arrays.asList(ot1, ot2, ot3, ot4, ot5, ot6, ot7, ot8));
+
+        Payment p1 = new Payment(null, Instant.parse("2021-07-12T19:53:07Z"), o3);
+        Payment p2 = new Payment(null, Instant.parse("2021-08-20T19:53:07Z"), o4);
+        Payment p3 = new Payment(null, Instant.parse("2021-08-25T19:53:07Z"), o5);
+        Payment p4 = new Payment(null, Instant.parse("2021-09-30T19:53:07Z"), o6);
+        Payment p5 = new Payment(null, Instant.parse("2021-10-15T19:53:07Z"), o8);
+        Payment p6 = new Payment(null, Instant.parse("2021-11-20T19:53:07Z"), o9);
+        Payment p7 = new Payment(null, Instant.parse("2021-12-10T19:53:07Z"), o10);
+        Payment p8 = new Payment(null, Instant.parse("2021-12-14T19:53:07Z"), o11);
+
+        o3.setPayment(p1);
+        o4.setPayment(p2);
+        o5.setPayment(p3);
+        o6.setPayment(p4);
+        o8.setPayment(p5);
+        o9.setPayment(p6);
+        o10.setPayment(p7);
+        o11.setPayment(p8);
+
+        orderRepository.saveAll(Arrays.asList(o3, o4, o5, o6, o8, o9, o10, o11));
     }
 }
