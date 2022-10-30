@@ -71,15 +71,17 @@ public class TestConfig implements CommandLineRunner {
         ticketRepository.saveAll(Arrays.asList(t1, t2, t3, t4, t5, t6));
 
         OrderTicket ot1 = new OrderTicket(t1, o1, 2, t1.getPrice());
-        OrderTicket ot2 = new OrderTicket(t2, o1, 1, t2.getPrice());
-        OrderTicket ot3 = new OrderTicket(t3, o1, 4, t3.getPrice());
-        OrderTicket ot4 = new OrderTicket(t4, o1, 6, t4.getPrice());
-        OrderTicket ot5 = new OrderTicket(t5, o1, 2, t5.getPrice());
-        OrderTicket ot6 = new OrderTicket(t2, o1, 1, t2.getPrice());
-        OrderTicket ot7 = new OrderTicket(t6, o1, 6, t6.getPrice());
-        OrderTicket ot8 = new OrderTicket(t3, o1, 4, t3.getPrice());
+        OrderTicket ot2 = new OrderTicket(t2, o2, 1, t2.getPrice());
+        OrderTicket ot3 = new OrderTicket(t3, o3, 4, t3.getPrice());
+        OrderTicket ot4 = new OrderTicket(t4, o4, 6, t4.getPrice());
+        OrderTicket ot5 = new OrderTicket(t5, o5, 2, t5.getPrice());
+        OrderTicket ot6 = new OrderTicket(t2, o6, 1, t2.getPrice());
+        OrderTicket ot7 = new OrderTicket(t6, o8, 6, t6.getPrice());
+        OrderTicket ot8 = new OrderTicket(t3, o9, 4, t3.getPrice());
+        OrderTicket ot9 = new OrderTicket(t3, o10, 4, t3.getPrice());
+        OrderTicket ot10 = new OrderTicket(t3, o11, 4, t3.getPrice());
 
-        orderTicketRepository.saveAll(Arrays.asList(ot1, ot2, ot3, ot4, ot5, ot6, ot7, ot8));
+        orderTicketRepository.saveAll(Arrays.asList(ot1, ot2, ot3, ot4, ot5, ot6, ot7, ot8, ot9, ot10));
 
         Payment p1 = new Payment(null, Instant.parse("2021-07-12T19:53:07Z"), o3);
         Payment p2 = new Payment(null, Instant.parse("2021-08-20T19:53:07Z"), o4);
